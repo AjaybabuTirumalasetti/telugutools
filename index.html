@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="te">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TeluguTools - Telugu Useful Calculators</title>
+<meta name="description" content="Simple Telugu calculators: EMI, percentage, age, salary and gratuity.">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Telugu",sans-serif;background:#f6f8fc;color:#172033}
+header{background:#fff;border-bottom:1px solid #e5e7eb;text-align:center;padding:24px 16px}
+.logo{font-size:32px;font-weight:800}.logo span{color:#2563eb}
+header p{color:#64748b;margin:8px 0 0}.wrap{max-width:1050px;margin:auto;padding:25px 16px}
+.intro{text-align:center;margin-bottom:22px}.intro h1{margin:0 0 8px}.intro p{color:#64748b}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:18px}
+.card{background:white;border:1px solid #e5e7eb;border-radius:16px;padding:20px;box-shadow:0 4px 16px #0000000a}
+.card h2{font-size:20px;margin:0 0 15px}.field{margin:10px 0}.field label{display:block;font-size:14px;color:#475569;margin-bottom:6px}
+input{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:9px;font-size:16px}
+button{width:100%;margin-top:8px;padding:11px;border:0;border-radius:9px;background:#2563eb;color:#fff;font-size:16px;cursor:pointer}
+.result{margin-top:12px;padding:11px;background:#eff6ff;border-radius:9px;min-height:42px;font-weight:600}
+small{color:#64748b}.footer{text-align:center;padding:30px;color:#64748b}
+</style>
+</head>
+<body>
+<header><div class="logo">Telugu<span>Tools</span></div><p>రోజువారీ లెక్కలు సులభంగా</p></header>
+<main class="wrap">
+<div class="intro"><h1>Useful Calculators</h1><p>మీకు కావాల్సిన calculator ఎంచుకుని వివరాలు ఇవ్వండి.</p></div>
+<div class="grid">
+
+<section class="card">
+<h2>🧮 Basic Calculator</h2>
+<div class="field"><label>Calculation</label>
+<input id="basicExpr" type="text" inputmode="decimal" placeholder="100 + 250 - 50">
+</div>
+<button onclick="calcBasic()">Calculate</button>
+<div class="result" id="basicOut"></div>
+<small>Supports +, −, ×, ÷ and brackets.</small>
+</section>
+
+<section class="card"><h2>💰 EMI Calculator</h2>
+<div class="field"><label>Loan Amount (₹)</label><input id="loan" type="number" placeholder="500000"></div>
+<div class="field"><label>Annual Interest (%)</label><input id="rate" type="number" step="0.01" placeholder="10"></div>
+<div class="field"><label>Tenure (Years)</label><input id="years" type="number" placeholder="5"></div>
+<button onclick="calcEMI()">Calculate EMI</button><div class="result" id="emiOut"></div></section>
+
+<section class="card"><h2>📊 Percentage Calculator</h2>
+<div class="field"><label>Value</label><input id="pv" type="number" placeholder="500"></div>
+<div class="field"><label>Percentage (%)</label><input id="pp" type="number" placeholder="20"></div>
+<button onclick="calcPercent()">Calculate</button><div class="result" id="pOut"></div></section>
+
+<section class="card"><h2>🎂 Age Calculator</h2>
+<div class="field"><label>Date of Birth</label><input id="dob" type="date"></div>
+<button onclick="calcAge()">Calculate Age</button><div class="result" id="ageOut"></div></section>
+
+<section class="card"><h2>💼 Annual Salary Calculator</h2>
+<div class="field"><label>Monthly Salary (₹)</label><input id="salary" type="number" placeholder="30000"></div>
+<button onclick="calcSalary()">Calculate</button><div class="result" id="salaryOut"></div></section>
+
+<section class="card"><h2>🏢 Gratuity Calculator</h2>
+<div class="field"><label>Last Basic + DA (₹)</label><input id="basic" type="number" placeholder="30000"></div>
+<div class="field"><label>Completed Service (Years)</label><input id="service" type="number" step="0.1" placeholder="5"></div>
+<button onclick="calcGratuity()">Calculate</button><div class="result" id="gratOut"></div>
+<small>*Indicative calculation; eligibility and applicable rules should be verified.</small></section>
+</div>
+</main>
+<div class="footer">© 2026 TeluguTools</div>
+<script>
+const money=n=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2}).format(n);
+function calcBasic(){
+ let expr=basicExpr.value.trim().replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-');
+ if(!expr){basicOut.textContent='Calculation ఇవ్వండి.';return}
+ if(!/^[0-9+\-*/().\s]+$/.test(expr)){basicOut.textContent='Numbers and + − × ÷ ( ) మాత్రమే ఉపయోగించండి.';return}
+ try{
+   let result=Function('"use strict";return ('+expr+')')();
+   if(!Number.isFinite(result)) throw new Error();
+   basicOut.textContent=`Answer: ${result}`;
+ }catch(e){basicOut.textContent='Calculation సరైనది కాదు.';}
+}
+function calcEMI(){let P=+loan.value,r=+rate.value/1200,n=+years.value*12;if(!P||!n){emiOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}let m=r?P*r*(1+r)**n/((1+r)**n-1):P/n;emiOut.textContent=`Monthly EMI: ${money(m)} | Total: ${money(m*n)}`;}
+function calcPercent(){let v=+pv.value,p=+pp.value;pOut.textContent=(Number.isFinite(v)&&Number.isFinite(p))?`${p}% of ${v} = ${v*p/100}`:'దయచేసి వివరాలు ఇవ్వండి.';}
+function calcAge(){let d=new Date(dob.value),n=new Date();if(isNaN(d)){ageOut.textContent='Date of birth ఎంచుకోండి.';return}let y=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth(),day=n.getDate()-d.getDate();if(day<0){m--;day+=new Date(n.getFullYear(),n.getMonth(),0).getDate()}if(m<0){y--;m+=12}ageOut.textContent=`వయస్సు: ${y} years, ${m} months, ${day} days`;}
+function calcSalary(){let s=+salary.value;salaryOut.textContent=s?`Annual Salary: ${money(s*12)}`:'దయచేసి salary ఇవ్వండి.';}
+function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
+</script>
+</body></html>
