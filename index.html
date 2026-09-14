@@ -99,8 +99,40 @@ function calcBasic(){
  }catch(e){basicOut.textContent='Calculation సరైనది కాదు.';}
 }
 function calcEMI(){let P=+loan.value,r=+rate.value/1200,n=+years.value*12;if(!P||!n){emiOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}let m=r?P*r*(1+r)**n/((1+r)**n-1):P/n;emiOut.textContent=`Monthly EMI: ${money(m)} | Total: ${money(m*n)}`;}
-function calcPercent(){let v=+pv.value,p=+pp.value;pOut.textContent=(Number.isFinite(v)&&Number.isFinite(p))?`${p}% of ${v} = ${v*p/100}`:'దయచేసి వివరాలు ఇవ్వండి.';}
-function calcAge(){let d=new Date(dob.value),n=new Date();if(isNaN(d)){ageOut.textContent='Date of birth ఎంచుకోండి.';return}let y=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth(),day=n.getDate()-d.getDate();if(day<0){m--;day+=new Date(n.getFullYear(),n.getMonth(),0).getDate()}if(m<0){y--;m+=12}ageOut.textContent=`వయస్సు: ${y} years, ${m} months, ${day} days`;}
+function calcPercent(){
+ let type=percentType.value;
+ let v=+pv.value;
+ let p=+pp.value;
+
+ if(!Number.isFinite(v)||!Number.isFinite(p)){
+   pOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';
+   return;
+ }
+
+ let result;
+
+ if(type==='of'){
+   result=v*p/100;
+   pOut.textContent=`${p}% of ${v} = ${result}`;
+ }
+ else if(type==='what'){
+   if(p===0){
+     pOut.textContent='Second Value 0 ఉండకూడదు.';
+     return;
+   }
+   result=(v/p)*100;
+   pOut.textContent=`${v} is ${result.toFixed(2)}% of ${p}`;
+ }
+ else if(type==='increase'){
+   result=v+(v*p/100);
+   pOut.textContent=`${v} + ${p}% = ${result}`;
+ }
+ else if(type==='decrease'){
+   result=v-(v*p/100);
+   pOut.textContent=`${v} - ${p}% = ${result}`;
+ }
+}
+ function calcAge(){let d=new Date(dob.value),n=new Date();if(isNaN(d)){ageOut.textContent='Date of birth ఎంచుకోండి.';return}let y=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth(),day=n.getDate()-d.getDate();if(day<0){m--;day+=new Date(n.getFullYear(),n.getMonth(),0).getDate()}if(m<0){y--;m+=12}ageOut.textContent=`వయస్సు: ${y} years, ${m} months, ${day} days`;}
 function calcSalary(){let s=+salary.value;salaryOut.textContent=s?`Annual Salary: ${money(s*12)}`:'దయచేసి salary ఇవ్వండి.';}
 function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
 </script>
