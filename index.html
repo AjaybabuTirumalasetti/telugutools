@@ -163,8 +163,29 @@ function calcPercent(){
    pOut.textContent=`${v} - ${p}% = ${result}`;
  }
 }
- function calcAge(){let d=new Date(dob.value),n=new Date();if(isNaN(d)){ageOut.textContent='Date of birth ఎంచుకోండి.';return}let y=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth(),day=n.getDate()-d.getDate();if(day<0){m--;day+=new Date(n.getFullYear(),n.getMonth(),0).getDate()}if(m<0){y--;m+=12}ageOut.textContent=`వయస్సు: ${y} years, ${m} months, ${day} days`;}
+function calcAge(){let d=new Date(dob.value),n=new Date();if(isNaN(d)){ageOut.textContent='Date of birth ఎంచుకోండి.';return}let y=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth(),day=n.getDate()-d.getDate();if(day<0){m--;day+=new Date(n.getFullYear(),n.getMonth(),0).getDate()}if(m<0){y--;m+=12}ageOut.textContent=`వయస్సు: ${y} years, ${m} months, ${day} days`;}
 function calcSalary(){let s=+salary.value;salaryOut.textContent=s?`Annual Salary: ${money(s*12)}`:'దయచేసి salary ఇవ్వండి.';}
+function calcGST(){
+ let type=gstType.value;
+ let amount=+gstAmount.value;
+ let rate=+gstRate.value;
+ if(!Number.isFinite(amount)||amount<0){
+   gstOut.textContent='దయచేసి amount ఇవ్వండి.';
+   return;
+ }
+ let gst;
+ let total;
+ if(type==='add'){
+   gst=amount*rate/100;
+   total=amount+gst;
+   gstOut.textContent=`GST: ${money(gst)} | Total: ${money(total)}`;
+ }
+ else if(type==='remove'){
+   let original=amount/(1+rate/100);
+   gst=amount-original;
+   gstOut.textContent=`Original Amount: ${money(original)} | GST: ${money(gst)}`;
+ }
+}
 function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
 </script>
 </body></html>
