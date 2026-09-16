@@ -154,6 +154,29 @@ small{color:#64748b}.footer{text-align:center;padding:30px;color:#64748b}
 <button onclick="calcDateDifference()">Calculate Difference</button>
 <div class="result" id="dateDiffOut"></div>
 </section>
+
+<section class="card">
+<h2>📏 Unit Converter</h2>
+<div class="field">
+<label>Conversion</label>
+<select id="unitType" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:9px;font-size:16px">
+<option value="km-m">Kilometers → Meters</option>
+<option value="m-km">Meters → Kilometers</option>
+<option value="m-cm">Meters → Centimeters</option>
+<option value="cm-m">Centimeters → Meters</option>
+<option value="ft-m">Feet → Meters</option>
+<option value="m-ft">Meters → Feet</option>
+<option value="in-cm">Inches → Centimeters</option>
+<option value="cm-in">Centimeters → Inches</option>
+</select>
+</div>
+<div class="field">
+<label>Value</label>
+<input id="unitValue" type="number" placeholder="10">
+</div>
+<button onclick="convertUnit()">Convert</button>
+<div class="result" id="unitOut"></div>
+</section>
  
 </div>
 </main>
