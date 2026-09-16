@@ -198,6 +198,20 @@ function calcGST(){
    gstOut.textContent=`Original Amount: ${money(original)} | GST: ${money(gst)}`;
  }
 }
+function calcDiscount(){
+ let price=+discountPrice.value;
+ let percent=+discountPercent.value;
+
+ if(!Number.isFinite(price)||price<0||!Number.isFinite(percent)||percent<0||percent>100){
+   discountOut.textContent='దయచేసి సరైన details ఇవ్వండి.';
+   return;
+ }
+
+ let discount=price*percent/100;
+ let finalPrice=price-discount;
+
+ discountOut.textContent=`Discount: ${money(discount)} | Final Price: ${money(finalPrice)}`;
+}
 function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
 </script>
 </body></html>
