@@ -277,24 +277,21 @@ function calcDateDifference(){
    dateDiffOut.textContent='End Date, Start Date కంటే ముందు ఉండకూడదు.';
    return;
  }
- let diff=end-start;
- let days=Math.floor(diff/(1000*60*60*24));
+ let totalDays=Math.floor((end-start)/(1000*60*60*24));
  let years=end.getFullYear()-start.getFullYear();
  let months=end.getMonth()-start.getMonth();
+ let days=end.getDate()-start.getDate();
 
+ if(days<0){
+   months--;
+   let previousMonth=new Date(end.getFullYear(),end.getMonth(),0);
+   days+=previousMonth.getDate();
+ }
  if(months<0){
    years--;
    months+=12;
  }
- if(end.getDate()<start.getDate()){
-   months--;
-
-   if(months<0){
-     years--;
-     months+=12;
-   }
- }
- dateDiffOut.textContent=`Difference: ${years} years, ${months} months, ${days} days`;
+ dateDiffOut.textContent=`Difference: ${years} years, ${months} months, ${days} days | Total: ${totalDays} days`;
 }
  
 function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
