@@ -397,6 +397,41 @@ function convertUnit(){
  }
  unitOut.textContent=`${value} ${from} = ${result.toFixed(4)} ${to}`;
 }
+
+function convertWeight(){
+ let type=weightType.value;
+ let value=+weightValue.value;
+
+ if(!Number.isFinite(value)){
+   weightOut.textContent='దయచేసి value ఇవ్వండి.';
+   return;
+ }
+
+ let result;
+ let from;
+ let to;
+ if(type==='kg-g'){
+   result=value*1000;
+   from='kg';
+   to='g';
+ }
+ else if(type==='g-kg'){
+   result=value/1000;
+   from='g';
+   to='kg';
+ }
+ else if(type==='kg-lb'){
+   result=value*2.20462262;
+   from='kg';
+   to='lb';
+ }
+ else if(type==='lb-kg'){
+   result=value/2.20462262;
+   from='lb';
+   to='kg';
+ }
+ weightOut.textContent=`${value} ${from} = ${result.toFixed(4)} ${to}`;
+}
  
 function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
 </script>
