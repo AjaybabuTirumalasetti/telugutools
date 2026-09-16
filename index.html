@@ -269,15 +269,19 @@ function calcBMI(){
 function calcDateDifference(){
  let start=new Date(startDate.value);
  let end=new Date(endDate.value);
+
  if(isNaN(start)||isNaN(end)){
    dateDiffOut.textContent='దయచేసి రెండు dates ఎంచుకోండి.';
    return;
  }
+
  if(end<start){
    dateDiffOut.textContent='End Date, Start Date కంటే ముందు ఉండకూడదు.';
    return;
  }
+
  let totalDays=Math.floor((end-start)/(1000*60*60*24));
+
  let years=end.getFullYear()-start.getFullYear();
  let months=end.getMonth()-start.getMonth();
  let days=end.getDate()-start.getDate();
@@ -287,10 +291,12 @@ function calcDateDifference(){
    let previousMonth=new Date(end.getFullYear(),end.getMonth(),0);
    days+=previousMonth.getDate();
  }
+
  if(months<0){
    years--;
    months+=12;
  }
+
  dateDiffOut.textContent=`Difference: ${years} years, ${months} months, ${days} days | Total: ${totalDays} days`;
 }
  
