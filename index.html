@@ -322,6 +322,61 @@ function calcDateDifference(){
 
  dateDiffOut.textContent=`Difference: ${years} years, ${months} months, ${days} days | Total: ${totalDays} days`;
 }
+
+function convertUnit(){
+ let type=unitType.value;
+ let value=+unitValue.value;
+ if(!Number.isFinite(value)){
+   unitOut.textContent='దయచేసి value ఇవ్వండి.';
+   return;
+ }
+
+ let result;
+ let from;
+ let to;
+
+ if(type==='km-m'){
+   result=value*1000;
+   from='km';
+   to='m';
+ }
+ else if(type==='m-km'){
+   result=value/1000;
+   from='m';
+   to='km';
+ }
+ else if(type==='m-cm'){
+   result=value*100;
+   from='m';
+   to='cm';
+ }
+ else if(type==='cm-m'){
+   result=value/100;
+   from='cm';
+   to='m';
+ }
+ else if(type==='ft-m'){
+   result=value*0.3048;
+   from='ft';
+   to='m';
+ }
+ else if(type==='m-ft'){
+   result=value/0.3048;
+   from='m';
+   to='ft';
+ }
+ else if(type==='in-cm'){
+   result=value*2.54;
+   from='in';
+   to='cm';
+ }
+ else if(type==='cm-in'){
+   result=value/2.54;
+   from='cm';
+   to='in';
+ }
+ unitOut.textContent=`${value} ${from} = ${result.toFixed(4)} ${to}`;
+}
  
 function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
 </script>
