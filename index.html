@@ -103,9 +103,7 @@ small{color:#64748b}.footer{text-align:center;padding:30px;color:#64748b}
 <option value="28">28%</option>
 </select>
 </div>
-
 <button onclick="calcGST()">Calculate GST</button>
-
 <div class="result" id="gstOut"></div>
 </section>
 
@@ -114,6 +112,20 @@ small{color:#64748b}.footer{text-align:center;padding:30px;color:#64748b}
 <div class="field"><label>Completed Service (Years)</label><input id="service" type="number" step="0.1" placeholder="5"></div>
 <button onclick="calcGratuity()">Calculate</button><div class="result" id="gratOut"></div>
 <small>*Indicative calculation; eligibility and applicable rules should be verified.</small></section>
+
+<section class="card">
+<h2>🏷️ Discount Calculator</h2>
+<div class="field">
+<label>Original Price (₹)</label>
+<input id="discountPrice" type="number" placeholder="1000">
+</div>
+<div class="field">
+<label>Discount (%)</label>
+<input id="discountPercent" type="number" placeholder="20">
+</div>
+<button onclick="calcDiscount()">Calculate Discount</button>
+<div class="result" id="discountOut"></div>
+</section>
 </div>
 </main>
 <div class="footer">© 2026 TeluguTools</div>
