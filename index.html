@@ -452,6 +452,43 @@ function convertWeight(){
  weightOut.textContent=`${value} ${from} = ${result.toFixed(4)} ${to}`;
 }
  
+function convertTemperature(){
+ let type=tempType.value;
+ let value=+tempValue.value;
+
+ if(!Number.isFinite(value)){
+   tempOut.textContent='దయచేసి temperature ఇవ్వండి.';
+   return;
+ }
+
+ let result;
+ let from;
+ let to;
+
+ if(type==='c-f'){
+   result=(value*9/5)+32;
+   from='°C';
+   to='°F';
+ }
+ else if(type==='f-c'){
+   result=(value-32)*5/9;
+   from='°F';
+   to='°C';
+ }
+ else if(type==='c-k'){
+   result=value+273.15;
+   from='°C';
+   to='K';
+ }
+ else if(type==='k-c'){
+   result=value-273.15;
+   from='K';
+   to='°C';
+ }
+
+ tempOut.textContent=`${value} ${from} = ${result.toFixed(2)} ${to}`;
+}
+ 
 function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
 </script>
 </body></html>
