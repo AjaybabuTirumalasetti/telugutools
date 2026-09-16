@@ -198,6 +198,25 @@ small{color:#64748b}.footer{text-align:center;padding:30px;color:#64748b}
 <div class="result" id="weightOut"></div>
 </section>
  
+<section class="card">
+<h2>🌡️ Temperature Converter</h2>
+<div class="field">
+<label>Conversion</label>
+<select id="tempType" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:9px;font-size:16px">
+<option value="c-f">Celsius → Fahrenheit</option>
+<option value="f-c">Fahrenheit → Celsius</option>
+<option value="c-k">Celsius → Kelvin</option>
+<option value="k-c">Kelvin → Celsius</option>
+</select>
+</div>
+<div class="field">
+<label>Temperature</label>
+<input id="tempValue" type="number" placeholder="25">
+</div>
+<button onclick="convertTemperature()">Convert</button>
+<div class="result" id="tempOut"></div>
+</section>
+ 
 </div>
 </main>
 <div class="footer">© 2026 TeluguTools</div>
