@@ -177,6 +177,26 @@ small{color:#64748b}.footer{text-align:center;padding:30px;color:#64748b}
 <button onclick="convertUnit()">Convert</button>
 <div class="result" id="unitOut"></div>
 </section>
+
+<section class="card">
+<h2>⚖️ Weight Converter</h2>
+
+<div class="field">
+<label>Conversion</label>
+<select id="weightType" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:9px;font-size:16px">
+<option value="kg-g">Kilograms → Grams</option>
+<option value="g-kg">Grams → Kilograms</option>
+<option value="kg-lb">Kilograms → Pounds</option>
+<option value="lb-kg">Pounds → Kilograms</option>
+</select>
+</div>
+<div class="field">
+<label>Value</label>
+<input id="weightValue" type="number" placeholder="10">
+</div>
+<button onclick="convertWeight()">Convert</button>
+<div class="result" id="weightOut"></div>
+</section>
  
 </div>
 </main>
