@@ -265,6 +265,38 @@ function calcBMI(){
  }
  bmiOut.textContent=`BMI: ${bmi.toFixed(2)} | Category: ${category}`;
 }
+ 
+function calcDateDifference(){
+ let start=new Date(startDate.value);
+ let end=new Date(endDate.value);
+ if(isNaN(start)||isNaN(end)){
+   dateDiffOut.textContent='దయచేసి రెండు dates ఎంచుకోండి.';
+   return;
+ }
+ if(end<start){
+   dateDiffOut.textContent='End Date, Start Date కంటే ముందు ఉండకూడదు.';
+   return;
+ }
+ let diff=end-start;
+ let days=Math.floor(diff/(1000*60*60*24));
+ let years=end.getFullYear()-start.getFullYear();
+ let months=end.getMonth()-start.getMonth();
+
+ if(months<0){
+   years--;
+   months+=12;
+ }
+ if(end.getDate()<start.getDate()){
+   months--;
+
+   if(months<0){
+     years--;
+     months+=12;
+   }
+ }
+ dateDiffOut.textContent=`Difference: ${years} years, ${months} months, ${days} days`;
+}
+ 
 function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
 </script>
 </body></html>
