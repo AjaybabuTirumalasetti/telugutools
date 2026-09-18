@@ -274,6 +274,26 @@ small{color:#64748b}.footer{text-align:center;padding:30px;color:#64748b}
 <div class="result" id="tempOut"></div>
 </section>
 
+<section class="card">
+  <h2>📈 SIP Calculator in Telugu</h2>
+  <small>Monthly SIP investment ద్వారా estimated returns మరియు final amount calculate చేసుకోండి.</small>
+  <div class="field">
+    <label>Monthly Investment (₹)</label>
+    <input id="sipAmount" type="number" placeholder="5000">
+  </div>
+  <div class="field">
+    <label>Expected Return (%)</label>
+    <input id="sipRate" type="number" step="0.1" placeholder="12">
+  </div>
+  <div class="field">
+    <label>Investment Period (Years)</label>
+    <input id="sipYears" type="number" step="1" placeholder="10">
+  </div>
+  <button onclick="calcSIP()">Calculate SIP</button>
+  <div class="result" id="sipOut"></div>
+</section>
+
+
  
 </div>
 </main>
