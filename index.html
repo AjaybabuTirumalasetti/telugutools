@@ -598,8 +598,6 @@ function calcSIP() {
     "<br>Final Amount: ₹" + futureValue.toLocaleString("en-IN", {maximumFractionDigits: 2});
 }
 
-
- 
 function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
 </script>
 </body></html>
