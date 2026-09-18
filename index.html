@@ -566,6 +566,39 @@ function convertTemperature(){
 
  tempOut.textContent=`${value} ${from} = ${result.toFixed(2)} ${to}`;
 }
+
+function calcSIP() {
+  const P = parseFloat(document.getElementById("sipAmount").value);
+  const annualRate = parseFloat(document.getElementById("sipRate").value);
+  const years = parseFloat(document.getElementById("sipYears").value);
+
+  if (isNaN(P) || isNaN(annualRate) || isNaN(years) || P <= 0 || annualRate < 0 || years <= 0) {
+    document.getElementById("sipOut").innerText = "దయచేసి సరైన వివరాలు ఇవ్వండి.";
+    return;
+  }
+
+  const months = years * 12;
+  const monthlyRate = annualRate / 12 / 100;
+
+  let futureValue;
+
+  if (monthlyRate === 0) {
+    futureValue = P * months;
+  } else {
+    futureValue =
+      P * (((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate));
+  }
+
+  const invested = P * months;
+  const returns = futureValue - invested;
+
+  document.getElementById("sipOut").innerHTML =
+    "Total Investment: ₹" + invested.toLocaleString("en-IN", {maximumFractionDigits: 2}) +
+    "<br>Estimated Returns: ₹" + returns.toLocaleString("en-IN", {maximumFractionDigits: 2}) +
+    "<br>Final Amount: ₹" + futureValue.toLocaleString("en-IN", {maximumFractionDigits: 2});
+}
+
+
  
 function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
 </script>
