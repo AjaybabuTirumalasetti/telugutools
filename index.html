@@ -293,8 +293,26 @@ small{color:#64748b}.footer{text-align:center;padding:30px;color:#64748b}
   <div class="result" id="sipOut"></div>
 </section>
 
+<section class="card">
+  <h2>🏦 Loan Calculator in Telugu</h2>
+  <small>Loan amount, interest rate మరియు tenure ఆధారంగా EMI, total interest calculate చేసుకోండి.</small>
+  <div class="field">
+    <label>Loan Amount (₹)</label>
+    <input id="loanCalcAmount" type="number" placeholder="500000">
+  </div>
+  <div class="field">
+    <label>Interest Rate (%)</label>
+    <input id="loanCalcRate" type="number" step="0.01" placeholder="10">
+  </div>
+  <div class="field">
+    <label>Loan Tenure (Years)</label>
+    <input id="loanCalcYears" type="number" step="1" placeholder="5">
+  </div>
+  <button onclick="calcLoan()">Calculate Loan</button>
+  <div class="result" id="loanCalcOut"></div>
+</section>
 
- 
+
 </div>
 </main>
 <div class="footer">© 2026 TeluguTools</div>
@@ -566,6 +584,9 @@ function convertTemperature(){
 
  tempOut.textContent=`${value} ${from} = ${result.toFixed(2)} ${to}`;
 }
+  
+function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
+
 
 function calcSIP() {
   const P = parseFloat(document.getElementById("sipAmount").value);
@@ -598,6 +619,53 @@ function calcSIP() {
     "<br>Final Amount: ₹" + futureValue.toLocaleString("en-IN", {maximumFractionDigits: 2});
 }
 
-function calcGratuity(){let b=+basic.value,y=+service.value;if(!b||!y){gratOut.textContent='దయచేసి వివరాలు ఇవ్వండి.';return}gratOut.textContent=`Indicative Gratuity: ${money(b*15/26*y)}`;}
+
+
+
+function calcLoan() {
+  const principal = parseFloat(document.getElementById("loanCalcAmount").value);
+  const annualRate = parseFloat(document.getElementById("loanCalcRate").value);
+  const years = parseFloat(document.getElementById("loanCalcYears").value);
+
+  if (
+    isNaN(principal) ||
+    isNaN(annualRate) ||
+    isNaN(years) ||
+    principal <= 0 ||
+    annualRate < 0 ||
+    years <= 0
+  ) {
+    document.getElementById("loanCalcOut").innerText =
+      "దయచేసి సరైన వివరాలు ఇవ్వండి.";
+    return;
+  }
+
+  const months = years * 12;
+  const monthlyRate = annualRate / 12 / 100;
+
+  let emi;
+
+  if (monthlyRate === 0) {
+    emi = principal / months;
+  } else {
+    emi =
+      principal *
+      monthlyRate *
+      Math.pow(1 + monthlyRate, months) /
+      (Math.pow(1 + monthlyRate, months) - 1);
+  }
+
+  const totalPayment = emi * months;
+  const totalInterest = totalPayment - principal;
+
+  document.getElementById("loanCalcOut").innerHTML =
+    "Monthly EMI: ₹" +
+    emi.toLocaleString("en-IN", { maximumFractionDigits: 2 }) +
+    "<br>Total Interest: ₹" +
+    totalInterest.toLocaleString("en-IN", { maximumFractionDigits: 2 }) +
+    "<br>Total Repayment: ₹" +
+    totalPayment.toLocaleString("en-IN", { maximumFractionDigits: 2 });
+}
+
 </script>
 </body></html>
