@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://ajaybabutirumalasetti.github.io/telugutools/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/emi-calculator/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/percentage-calculator/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/age-calculator/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/salary-calculator/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/gst-calculator/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/gratuity-calculator/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/discount-calculator/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/bmi-calculator/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/date-difference/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/unit-converter/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/weight-converter/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/temperature-converter/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/sip-calculator/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/loan-calculator/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/basic-calculator/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/about/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/contact/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/privacy-policy/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://ajaybabutirumalasetti.github.io/telugutools/terms/</loc><changefreq>weekly</changefreq></url>
 </urlset>
