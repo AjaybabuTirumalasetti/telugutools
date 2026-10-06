@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ajaybabutirumalasetti.github.io/telugutools/sitemap.xml
